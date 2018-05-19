@@ -6,8 +6,8 @@ public class Player : MonoBehaviour {
     private Rigidbody2D rb2d;
     public bool player1;
     public float jumpHeight;
-    private bool grounded; 
-
+    private bool grounded;
+    public float moveSpeed;
 	// Use this for initialization
 	void Start () {
         rb2d = GetComponent<Rigidbody2D>();
@@ -27,11 +27,29 @@ public class Player : MonoBehaviour {
                 jump();
             }
 
-        } else
+            if (Input.GetKey(KeyCode.A))
+            {
+                transform.Translate(Vector3.left * moveSpeed);
+            }
+            else if (Input.GetKey(KeyCode.D))
+            {
+                transform.Translate(Vector3.right * moveSpeed);
+            }
+        }
+        else
         {
             if (Input.GetKeyDown(KeyCode.UpArrow))
             {
                 jump();
+            }
+
+            if (Input.GetKey(KeyCode.LeftArrow))
+            {
+                transform.Translate(Vector3.left * moveSpeed);
+            }
+            else if (Input.GetKey(KeyCode.RightArrow))
+            {
+                transform.Translate(Vector3.right * moveSpeed);
             }
         }
     }
