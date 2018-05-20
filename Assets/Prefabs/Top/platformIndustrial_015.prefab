@@ -23,7 +23,7 @@ GameObject:
   - component: {fileID: 61706975061572498}
   m_Layer: 0
   m_Name: platformIndustrial_015
-  m_TagString: floor
+  m_TagString: Floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

@@ -137,4 +137,13 @@ public class Player : MonoBehaviour {
             grounded = false;
         }
     }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if(collision.gameObject.tag.Equals("rearCamera"))
+        {
+            animator.SetBool("isDead", true);
+            print("isDead bool true");
+        }
+    }
 }
