@@ -7,7 +7,7 @@ using UnityEngine.SceneManagement;
 
 public class Player : MonoBehaviour {
 
-
+    public AudioClip deathSound;
     private Rigidbody2D rb2d;
     public bool player1;
     public float jumpHeight;
@@ -141,7 +141,7 @@ public class Player : MonoBehaviour {
     {
         if (collision.gameObject.tag.Equals("deadlyObject"))
         {
-            death();
+            death(collision.transform.position);
         }
     }
 
@@ -166,7 +166,8 @@ public class Player : MonoBehaviour {
     {
         if(collision.gameObject.tag.Equals("rearCamera"))
         {
-            death();
+
+            death(collision.transform.position);
         }
     }
 
@@ -190,10 +191,11 @@ public class Player : MonoBehaviour {
         gameOver = false;
     }
 
-    private void death()
+    private void death(Vector3 soundPosition)
     {
         animator.SetBool("isDead", true);
         numDeaths++;
+        AudioSource.PlayClipAtPoint(deathSound, soundPosition);
         if (numDeaths >= maxDeaths)
         {
             numDeaths = 0;
