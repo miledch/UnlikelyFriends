@@ -21,9 +21,10 @@ GameObject:
   - component: {fileID: 4189477839323816}
   - component: {fileID: 212572365179249108}
   - component: {fileID: 61342015858000940}
+  - component: {fileID: 114317982429413508}
   m_Layer: 0
   m_Name: platformIndustrial_086 (1)
-  m_TagString: Floor
+  m_TagString: Breakable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -35,7 +36,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1876920963672600}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 23.006527, y: 107.84039, z: 0}
+  m_LocalPosition: {x: 168.30003, y: -102.90001, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -66,6 +67,17 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.5134926, y: 0.6206757}
   m_EdgeRadius: 0
+--- !u!114 &114317982429413508
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1876920963672600}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 99c2b2bc22ffd76438d3995a00ef5ea6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!212 &212572365179249108
 SpriteRenderer:
   m_ObjectHideFlags: 1

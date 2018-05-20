@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.Events;
 
 public class Player : MonoBehaviour {
+
     private Rigidbody2D rb2d;
     public bool player1;
     public float jumpHeight;
