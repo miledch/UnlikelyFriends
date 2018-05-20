@@ -185,7 +185,7 @@ public class Player : MonoBehaviour {
 
     IEnumerator Wait()
     {
-        yield return new WaitForSeconds(2);
+        yield return new WaitForSeconds(2.5f);
         Scene scene = SceneManager.GetActiveScene();
         SceneManager.LoadScene(scene.name);
         gameOver = false;
@@ -199,8 +199,8 @@ public class Player : MonoBehaviour {
         if (numDeaths >= maxDeaths)
         {
             numDeaths = 0;
-            SceneManager.LoadScene("Lose");
-            //RestartLevel(true);
+            //SceneManager.LoadScene("Lose");
+            RestartLevel(true);
         }
         gameOver = true;
         RestartLevel(false);
@@ -210,7 +210,8 @@ public class Player : MonoBehaviour {
     {
         yield return new WaitForSeconds(2);
         print("loading lose");
-        SceneManager.LoadScene("Lose");
-        gameOver = false;
+        String name = "Lose";
+        SceneManager.LoadScene(name);
+        //gameOver = false;
     }
 }
