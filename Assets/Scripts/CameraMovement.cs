@@ -11,8 +11,6 @@ public class CameraMovement : MonoBehaviour {
     // Use this for initialization
     void Start () {
         rigidbody2D = GetComponent<Rigidbody2D>();
-
-        rigidbody2D.velocity += Vector2.right * speed * Time.deltaTime;
 	}
 	
 	// Update is called once per frame
