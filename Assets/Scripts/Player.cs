@@ -131,6 +131,14 @@ public class Player : MonoBehaviour {
         
     }
 
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.tag.Equals("deadlyObject"))
+        {
+            death();
+        }
+    }
+
     private void OnCollisionStay2D(Collision2D collision)
     {
         if (collision.gameObject.tag.Equals("Floor"))
@@ -152,9 +160,7 @@ public class Player : MonoBehaviour {
     {
         if(collision.gameObject.tag.Equals("rearCamera"))
         {
-            animator.SetBool("isDead", true);
-            gameOver = true;
-            RestartLevel();
+            death();
         }
     }
 
@@ -169,5 +175,12 @@ public class Player : MonoBehaviour {
         Scene scene = SceneManager.GetActiveScene();
         SceneManager.LoadScene(scene.name);
         gameOver = false;
+    }
+
+    private void death()
+    {
+        animator.SetBool("isDead", true);
+        gameOver = true;
+        RestartLevel();
     }
 }
