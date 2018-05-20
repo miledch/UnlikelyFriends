@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class Player : MonoBehaviour {
     private Rigidbody2D rb2d;
@@ -17,7 +18,6 @@ public class Player : MonoBehaviour {
     void Start () {
         rb2d = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
-        
     }
 	
 	void LateUpdate ()
@@ -143,7 +143,7 @@ public class Player : MonoBehaviour {
         if(collision.gameObject.tag.Equals("rearCamera"))
         {
             animator.SetBool("isDead", true);
-            print("isDead bool true");
         }
     }
+
 }

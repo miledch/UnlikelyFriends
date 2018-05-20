@@ -427,7 +427,7 @@ GameObject:
   - component: {fileID: 114510412922110832}
   m_Layer: 0
   m_Name: RedNinja
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1003,7 +1003,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player1: 1
-  jumpHeight: 500
+  jumpHeight: 350
   moveSpeed: 10
 --- !u!212 &212163827514272826
 SpriteRenderer:
