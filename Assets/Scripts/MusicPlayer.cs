@@ -8,7 +8,6 @@ public class MusicPlayer : MonoBehaviour {
 
     void Awake()
     {
-        Debug.Log("Music player Awake " + GetInstanceID());
 
         if (instance != null)
         {
@@ -25,7 +24,6 @@ public class MusicPlayer : MonoBehaviour {
     // Use this for initialization
     void Start()
     {
-        Debug.Log("Music player Start " + GetInstanceID());
 
 
     }
