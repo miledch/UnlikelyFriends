@@ -13,10 +13,15 @@ public class Player : MonoBehaviour {
     private bool grounded;
     public float moveSpeed;
 
+    public int maxDeaths = 3;
+    static int numDeaths;
+
     private float horizontalInput;
     private bool gameOver;
     private float xMax = 0.0f;
     float distance;
+
+
 
     private Animator animator;
 
@@ -153,14 +158,28 @@ public class Player : MonoBehaviour {
         if(collision.gameObject.tag.Equals("rearCamera"))
         {
             animator.SetBool("isDead", true);
+            numDeaths++;
+            if (numDeaths >= maxDeaths)
+            {
+                numDeaths = 0;
+                SceneManager.LoadScene("Lose");
+                //RestartLevel(true);
+            }
             gameOver = true;
-            RestartLevel();
+            RestartLevel(false);
         }
     }
 
-    private void RestartLevel()
+    private void RestartLevel(bool lose)
     {
-        StartCoroutine("Wait");
+        if (lose)
+        {
+            StartCoroutine("WaitLose");
+        }
+        else
+        {
+            StartCoroutine("Wait");
+        }
     }
 
     IEnumerator Wait()
@@ -170,4 +189,13 @@ public class Player : MonoBehaviour {
         SceneManager.LoadScene(scene.name);
         gameOver = false;
     }
+
+    IEnumerator WaitLose()
+    {
+        yield return new WaitForSeconds(2);
+        print("loading lose");
+        SceneManager.LoadScene("Lose");
+        gameOver = false;
+    }
+
 }
