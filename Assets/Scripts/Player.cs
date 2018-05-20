@@ -7,7 +7,7 @@ using UnityEngine.SceneManagement;
 
 public class Player : MonoBehaviour {
 
-
+    public AudioClip deathSound;
     private Rigidbody2D rb2d;
     public bool player1;
     public float jumpHeight;
@@ -141,7 +141,7 @@ public class Player : MonoBehaviour {
     {
         if (collision.gameObject.tag.Equals("deadlyObject"))
         {
-            death();
+            death(collision.transform.position);
         }
     }
 
@@ -170,7 +170,7 @@ public class Player : MonoBehaviour {
             {
                 transform.localScale = new Vector3(transform.localScale.x * -1, transform.localScale.x, transform.localScale.z);
             }
-            death();
+            death(collision.transform.position);
         }
     }
 
@@ -188,21 +188,22 @@ public class Player : MonoBehaviour {
 
     IEnumerator Wait()
     {
-        yield return new WaitForSeconds(2);
+        yield return new WaitForSeconds(2.5f);
         Scene scene = SceneManager.GetActiveScene();
         SceneManager.LoadScene(scene.name);
         gameOver = false;
     }
 
-    private void death()
+    private void death(Vector3 soundPosition)
     {
         animator.SetBool("isDead", true);
         numDeaths++;
+        AudioSource.PlayClipAtPoint(deathSound, soundPosition);
         if (numDeaths >= maxDeaths)
         {
             numDeaths = 0;
-            SceneManager.LoadScene("Lose");
-            //RestartLevel(true);
+            //SceneManager.LoadScene("Lose");
+            RestartLevel(true);
         }
 
         gameOver = true;
@@ -213,7 +214,8 @@ public class Player : MonoBehaviour {
     {
         yield return new WaitForSeconds(2);
         print("loading lose");
-        SceneManager.LoadScene("Lose");
-        gameOver = false;
+        String name = "Lose";
+        SceneManager.LoadScene(name);
+        //gameOver = false;
     }
 }

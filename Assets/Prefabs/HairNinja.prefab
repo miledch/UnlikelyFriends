@@ -926,7 +926,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1669243172874626}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 135.27783, y: -1.8122098, z: -10}
+  m_LocalPosition: {x: 133.03, y: 4.23, z: -10}
   m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
   m_Children:
   - {fileID: 4655748512905974}
@@ -1032,9 +1032,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8abf9bf7b9b29bf4c82c460bf21bf984, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  deathSound: {fileID: 8300000, guid: ec5073b61c7af214ca9e86d87c1bcbe9, type: 3}
   player1: 0
   jumpHeight: 300
   moveSpeed: 5
+  maxDeaths: 3
 --- !u!212 &212072769340988898
 SpriteRenderer:
   m_ObjectHideFlags: 1
