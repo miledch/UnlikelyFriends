@@ -7,7 +7,7 @@ using UnityEngine.SceneManagement;
 
 public class Player : MonoBehaviour {
 
-
+    public AudioClip deathSound;
     private Rigidbody2D rb2d;
     public bool player1;
     public float jumpHeight;
@@ -160,6 +160,8 @@ public class Player : MonoBehaviour {
         {
             animator.SetBool("isDead", true);
             numDeaths++;
+            AudioSource.PlayClipAtPoint(deathSound, collision.transform.position);
+
             if (numDeaths >= maxDeaths)
             {
                 numDeaths = 0;
