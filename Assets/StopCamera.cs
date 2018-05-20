@@ -4,13 +4,13 @@ using UnityEngine;
 
 public class StopCamera : MonoBehaviour
 {
-
+    private CameraMovement cameraMovement;
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        print("I WAS HERE");
         if(collision.gameObject.tag == "Player")
         {
-            print("YOU DEAD FOO");
+            cameraMovement = this.transform.parent.gameObject.GetComponent<CameraMovement>();
+            cameraMovement.StopMovement();
         }
     }
 }

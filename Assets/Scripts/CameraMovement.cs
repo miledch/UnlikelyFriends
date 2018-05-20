@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class CameraMovement : MonoBehaviour {
 
-    private Rigidbody2D rigidbody2D;
+    private new Rigidbody2D rigidbody2D;
     public float speed = 0.25f;
     public float acceleration = 0.01f;
 
@@ -21,9 +21,9 @@ public class CameraMovement : MonoBehaviour {
         this.rigidbody2D.velocity += Vector2.right * acceleration * Time.deltaTime;
     }
 
-    protected void StopMovement()
+    public void StopMovement()
     {
-        print("MOVEMENT STOPPED");
+        rigidbody2D.constraints = RigidbodyConstraints2D.FreezeAll;
     }
 
 
