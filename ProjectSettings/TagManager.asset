@@ -7,6 +7,9 @@ TagManager:
   - floor
   - Floor
   - rearCamera
+  - deadlyObject
+  - Breakable
+  - Tunnel
   layers:
   - Default
   - TransparentFX

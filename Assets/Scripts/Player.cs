@@ -137,6 +137,14 @@ public class Player : MonoBehaviour {
         
     }
 
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.tag.Equals("deadlyObject"))
+        {
+            death(collision.transform.position);
+        }
+    }
+
     private void OnCollisionStay2D(Collision2D collision)
     {
         if (collision.gameObject.tag.Equals("Floor"))
@@ -158,18 +166,8 @@ public class Player : MonoBehaviour {
     {
         if(collision.gameObject.tag.Equals("rearCamera"))
         {
-            animator.SetBool("isDead", true);
-            numDeaths++;
-            AudioSource.PlayClipAtPoint(deathSound, collision.transform.position);
 
-            if (numDeaths >= maxDeaths)
-            {
-                numDeaths = 0;
-                SceneManager.LoadScene("Lose");
-                //RestartLevel(true);
-            }
-            gameOver = true;
-            RestartLevel(false);
+            death(collision.transform.position);
         }
     }
 
@@ -193,6 +191,21 @@ public class Player : MonoBehaviour {
         gameOver = false;
     }
 
+    private void death(Vector3 soundPosition)
+    {
+        animator.SetBool("isDead", true);
+        numDeaths++;
+        AudioSource.PlayClipAtPoint(deathSound, soundPosition);
+        if (numDeaths >= maxDeaths)
+        {
+            numDeaths = 0;
+            SceneManager.LoadScene("Lose");
+            //RestartLevel(true);
+        }
+        gameOver = true;
+        RestartLevel(false);
+    }
+
     IEnumerator WaitLose()
     {
         yield return new WaitForSeconds(2);
@@ -200,5 +213,4 @@ public class Player : MonoBehaviour {
         SceneManager.LoadScene("Lose");
         gameOver = false;
     }
-
 }
