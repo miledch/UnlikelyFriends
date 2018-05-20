@@ -166,7 +166,10 @@ public class Player : MonoBehaviour {
     {
         if(collision.gameObject.tag.Equals("rearCamera"))
         {
-
+            if (transform.localScale.x > 0)
+            {
+                transform.localScale = new Vector3(transform.localScale.x * -1, transform.localScale.x, transform.localScale.z);
+            }
             death(collision.transform.position);
         }
     }
@@ -202,6 +205,7 @@ public class Player : MonoBehaviour {
             //SceneManager.LoadScene("Lose");
             RestartLevel(true);
         }
+
         gameOver = true;
         RestartLevel(false);
     }
