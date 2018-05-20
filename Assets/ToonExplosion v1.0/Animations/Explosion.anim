@@ -1248,9 +1248,9 @@ AnimationClip:
   m_GenerateMotionCurves: 0
   m_Events:
   - time: 1
-    functionName: 
+    functionName: ExplosionEnd
     data: 
-    objectReferenceParameter: {fileID: 11500000, guid: 1707c8d7e83386d4f90e030e41f386ff,
+    objectReferenceParameter: {fileID: 11500000, guid: e41131b3af02e184cbedcb879cb66a1b,
       type: 3}
     floatParameter: 0
     intParameter: 0
