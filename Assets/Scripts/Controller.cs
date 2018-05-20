@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Controller : MonoBehaviour
 {
+    public AudioClip smokePoof;
     public GameObject player1;
     public GameObject player2;
     public GameObject smokePuffs;
@@ -53,6 +54,8 @@ public class Controller : MonoBehaviour
         // Gravity
         player1.GetComponent<Rigidbody2D>().gravityScale *= -1;
         player2.GetComponent<Rigidbody2D>().gravityScale *= -1;
+
+        AudioSource.PlayClipAtPoint(smokePoof, player1Pos);
 
         // Sprite
         flipSpriteUpsideDown();
