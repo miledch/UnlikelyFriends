@@ -2,23 +2,26 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Controller : MonoBehaviour {
+public class Controller : MonoBehaviour
+{
     public GameObject player1;
     public GameObject player2;
+    public GameObject smokePuffs;
 
-    private float player1FlipY ;
+    private float player1FlipY;
     private float player2FlipY;
 
 
     // Use this for initialization
-    void Start () {
+    void Start()
+    {
 
         player1FlipY = player1.transform.localScale.y;
         player1.transform.localScale = new Vector3(player1.transform.localScale.x, player1FlipY, player1.transform.localScale.z);
-        player2FlipY = player2.transform.localScale.y*-1;
+        player2FlipY = player2.transform.localScale.y * -1;
         player2.transform.localScale = new Vector3(player2.transform.localScale.x, player2FlipY, player2.transform.localScale.z);
 
-        if(player1.GetComponent<Rigidbody2D>().gravityScale < 0)
+        if (player1.GetComponent<Rigidbody2D>().gravityScale < 0)
         {
             player1.GetComponent<Rigidbody2D>().gravityScale *= -1;
         }
@@ -29,14 +32,17 @@ public class Controller : MonoBehaviour {
         }
 
     }
-// Update is called once per frame
-void Update () {
+    // Update is called once per frame
+    void Update()
+    {
         if (Input.GetKeyDown(KeyCode.Space))
         {
             switchPlayers();
+            GameObject smokePuff1 = Instantiate(smokePuffs, player1.transform.position, Quaternion.identity) as GameObject;
+            GameObject smokePuff2 = Instantiate(smokePuffs, player2.transform.position, Quaternion.identity) as GameObject;
         }
-		
-	}
+
+    }
     private void switchPlayers()
     {
         // Positions
@@ -55,9 +61,9 @@ void Update () {
 
     private void flipSpriteUpsideDown()
     {
-        player1FlipY = player1FlipY*-1;
+        player1FlipY = player1FlipY * -1;
         player1.transform.localScale = new Vector3(player1.transform.localScale.x, player1FlipY, player1.transform.localScale.z);
-        player2FlipY = player2FlipY*-1;
+        player2FlipY = player2FlipY * -1;
         player2.transform.localScale = new Vector3(player2.transform.localScale.x, player2FlipY, player2.transform.localScale.z);
     }
 

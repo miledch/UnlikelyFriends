@@ -1,7 +1,9 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.SceneManagement;
 
 public class Player : MonoBehaviour {
 
@@ -12,13 +14,14 @@ public class Player : MonoBehaviour {
     public float moveSpeed;
 
     private float horizontalInput;
+    private bool gameOver;
 
     private Animator animator;
 
 
     void Start () {
         rb2d = GetComponent<Rigidbody2D>();
-        animator = GetComponent<Animator>();
+        animator = GetComponent<Animator>();      
     }
 	
 	void LateUpdate ()
@@ -53,7 +56,7 @@ public class Player : MonoBehaviour {
 
     private void Update()
     {
-        if(player1)
+        if(player1 && !gameOver)
         {
             if(Input.GetKeyDown(KeyCode.W))
             {
@@ -69,7 +72,7 @@ public class Player : MonoBehaviour {
                 transform.Translate(Vector3.right * moveSpeed * Time.deltaTime);
             }
         }
-        else
+        else if(!gameOver)
         {
             if (Input.GetKeyDown(KeyCode.UpArrow))
             {
@@ -106,7 +109,7 @@ public class Player : MonoBehaviour {
     }
     private void jump()
     {
-        if (grounded)
+        if (grounded && !gameOver)
         {
             animator.Play("Jump");
             if (rb2d.gravityScale < 0)
@@ -144,7 +147,21 @@ public class Player : MonoBehaviour {
         if(collision.gameObject.tag.Equals("rearCamera"))
         {
             animator.SetBool("isDead", true);
+            gameOver = true;
+            RestartLevel();
         }
     }
 
+    private void RestartLevel()
+    {
+        StartCoroutine("Wait");
+    }
+
+    IEnumerator Wait()
+    {
+        yield return new WaitForSeconds(2);
+        Scene scene = SceneManager.GetActiveScene();
+        SceneManager.LoadScene(scene.name);
+        gameOver = false;
+    }
 }

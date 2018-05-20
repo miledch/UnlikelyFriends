@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Breakable : MonoBehaviour {
 
+    public GameObject explosion;
+
 	// Use this for initialization
 	void Start () {
 		
@@ -22,6 +24,7 @@ public class Breakable : MonoBehaviour {
 
             if(!playerCollision.player1)
             {
+                Instantiate(explosion, transform.position, Quaternion.identity);
                 Destroy(this.gameObject);
             }
         }
