@@ -12,6 +12,9 @@ public class Player : MonoBehaviour {
     private bool grounded;
     public float moveSpeed;
 
+    public static int numberDeaths;
+    public int maxDeaths = 3;
+
     private float horizontalInput;
     private bool gameOver;
 
@@ -146,6 +149,13 @@ public class Player : MonoBehaviour {
         if(collision.gameObject.tag.Equals("rearCamera"))
         {
             animator.SetBool("isDead", true);
+            numberDeaths++;
+            print("number of deaths" + numberDeaths);
+            if (numberDeaths >= maxDeaths)
+            {
+                numberDeaths = 0;
+                SceneManager.LoadScene("Lose");
+            }
             gameOver = true;
             RestartLevel();
         }
