@@ -14,13 +14,16 @@ public class Player : MonoBehaviour {
 
     private float horizontalInput;
     private bool gameOver;
+    private float xMax = 0.0f;
+    float distance;
 
     private Animator animator;
 
 
     void Start () {
         rb2d = GetComponent<Rigidbody2D>();
-        animator = GetComponent<Animator>();      
+        animator = GetComponent<Animator>();
+        distance = transform.position.z - Camera.main.transform.position.z;
     }
 	
 	void LateUpdate ()
@@ -87,6 +90,9 @@ public class Player : MonoBehaviour {
                 transform.Translate(Vector3.right * moveSpeed * Time.deltaTime);
             }
         }
+        xMax = Camera.main.ViewportToWorldPoint(new Vector3(1, 0, distance)).x;
+        float newX = Mathf.Clamp(transform.position.x, transform.position.x, (xMax - 0.3f));
+        transform.position = new Vector3(newX, transform.position.y, transform.position.z);
     }
 
     private void Flip()
